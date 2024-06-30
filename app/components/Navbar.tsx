@@ -1,5 +1,3 @@
-// app/components/Navbar.tsx:
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -18,22 +16,47 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
-const fetchVersionFromGitHub = async () => {
-  // will replace this with actual version fetching logic
-  return "v1.0.0";
+type ReleaseNote = {
+  id: number;
+  name: string;
+  tag_name: string;
+  body: string;
+};
+
+const fetchReleaseNotes = async (): Promise<ReleaseNote[]> => {
+  const response = await fetch('/api/releases');
+  if (!response.ok) {
+    throw new Error('Failed to fetch release notes');
+  }
+  const data = await response.json();
+  console.log('Fetched release notes:', data);
+  return data;
 };
 
 const NavItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <Link href={href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-        {children}
-    </Link>
+  <Link href={href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+    {children}
+  </Link>
 );
 
 const Navbar = () => {
-  const [version, setVersion] = useState("Loading...");
+  const [version, setVersion] = useState<string>('Loading...');
+  const [changelog, setChangelog] = useState<ReleaseNote[]>([]);
 
   useEffect(() => {
-    fetchVersionFromGitHub().then(setVersion);
+    fetchReleaseNotes()
+      .then(data => {
+        if (data.length > 0) {
+          setVersion(data[0].tag_name);
+          setChangelog(data);
+        } else {
+          setVersion('No version found');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        setVersion('Error fetching version');
+      });
   }, []);
 
   const navItems = [
@@ -53,7 +76,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <Link href="/" className="text-xl font-bold text-primary">
-          DeltaMod
+            DeltaMod
           </Link>
 
           {/* Desktop Menu */}
@@ -79,16 +102,17 @@ const Navbar = () => {
                 </SheetHeader>
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold">Version {version}</h3>
-                  <ul className="list-disc pl-5 mt-2">
-                    <li>Added support for multiple Steam games</li>
-                    <li>Improved error handling for invalid links</li>
-                    <li>Enhanced UI for better user experience</li>
-                  </ul>
+                  {changelog.map(note => (
+                    <div key={note.id} className="mb-4">
+                      <h4 className="font-bold">{note.name}</h4>
+                      <p>{note.body}</p>
+                    </div>
+                  ))}
                 </div>
               </SheetContent>
             </Sheet>
             <a
-              href="https://github.com/yourusername/steam-mod-fetcher"
+              href="https://github.com/wadedesign/steam-mods"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -131,17 +155,18 @@ const Navbar = () => {
                     </SheetHeader>
                     <div className="mt-4">
                       <h3 className="text-lg font-semibold">Version {version}</h3>
-                      <ul className="list-disc pl-5 mt-2">
-                        <li>Added support for multiple Steam games</li>
-                        <li>Improved error handling for invalid links</li>
-                        <li>Enhanced UI for better user experience</li>
-                      </ul>
+                      {changelog.map(note => (
+                        <div key={note.id} className="mb-4">
+                          <h4 className="font-bold">{note.name}</h4>
+                          <p>{note.body}</p>
+                        </div>
+                      ))}
                     </div>
                   </SheetContent>
                 </Sheet>
                 <div className="flex items-center space-x-4">
                   <a
-                    href="https://github.com/yourusername/steam-mod-fetcher"
+                    href="https://github.com/wadedesign/steam-mods"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:text-primary/80 transition-colors"
