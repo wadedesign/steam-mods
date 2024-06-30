@@ -1,6 +1,6 @@
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Steam from './components/Steam';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Contact from '../components/Contact';
 
 export default function Page() {
   return (
@@ -8,7 +8,7 @@ export default function Page() {
       <Navbar />
       <div className="flex-grow">
         {/* Add your page content here */}
-        <Steam />
+        <Contact />
       </div>
       <Footer />
     </div>
