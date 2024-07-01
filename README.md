@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Steam Workshop Mod Fetcher
+
+[![Website](https://img.shields.io/website-up-down-green-red/http/steam-mods.wadedev.us.svg)](https://steam-mods.wadedev.us)
+
+Steam Workshop Mod Fetcher is a tool that allows users to easily fetch and manage Steam Workshop mod information. Simply enter a Steam Workshop URL to retrieve mod details and community pack information.
+
+## Features
+
+- **Fetch Mod Details**: Enter a Steam Workshop URL to get detailed information about mods.
+- **User-Friendly Interface**: Clean and simple UI for easy navigation.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+
+## Showcase 
+
+### Home Page
+![Home Page](./public/test1.png)
+
+### Fetching Mod Details
+![Fetching Mod Details](./public/test3.png)
+
+### Mod Details Display
+![Mod Details Display](./public/test2.png)
+
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - The React Framework for Production
+- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript at Any Scale
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-First CSS Framework
+- [Supabase](https://supabase.io/) - Open Source Firebase Alternative
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js
+- npm or yarn
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/wadedesgin/steam-workshop-mod-fetcher.git
+    ```
 
-## Learn More
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. Start the development server
+   ```sh
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Open your browser and navigate to `http://localhost:3000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

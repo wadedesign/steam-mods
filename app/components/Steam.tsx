@@ -151,11 +151,11 @@ const Steam = () => {
                       <div className="flex">
                         <Textarea
                           readOnly
-                          value={data.mods.map((mod: { id: any; }) => mod.id).join('; ')}
+                          value={data.mods.map((mod: { id: any; }) => mod.id).join(';')}
                           className="flex-grow"
                         />
                         <Button
-                          onClick={() => copyToClipboard(data.mods.map((mod: { id: any; }) => mod.id).join('; '))}
+                          onClick={() => copyToClipboard(data.mods.map((mod: { id: any; }) => mod.id).join(';'))}
                           className="ml-2"
                         >
                           <Copy className="h-4 w-4" />
@@ -167,11 +167,11 @@ const Steam = () => {
                       <div className="flex">
                         <Textarea
                           readOnly
-                          value={data.mods.map((mod: { name: any; }) => mod.name).join('; ')}
+                          value={data.mods.map((mod: { name: any; }) => mod.name).join(';')}
                           className="flex-grow"
                         />
                         <Button
-                          onClick={() => copyToClipboard(data.mods.map((mod: { name: any; }) => mod.name).join('; '))}
+                          onClick={() => copyToClipboard(data.mods.map((mod: { name: any; }) => mod.name).join(';'))}
                           className="ml-2"
                         >
                           <Copy className="h-4 w-4" />
