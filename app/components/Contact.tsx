@@ -1,6 +1,6 @@
 // app/components/Contact.tsx
 
-'use client';
+'use client'
 
 import React, { useState } from 'react';
 import { Mail, Handshake, Gamepad, ArrowRight } from 'lucide-react';
